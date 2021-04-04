@@ -1,4 +1,4 @@
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 fname = 'data.txt'
 with open(fname, 'r') as f:
     s = [i.split(',') for i in f.readlines()]
@@ -18,16 +18,15 @@ print("the weight of knapsack is:")
 print(weight)
 print("the value of knapsack is:")
 print(value)
-#plt.scatter(weight,value)
+plt.scatter(weight,value)
 #plt.title("Sales for the first 6 months") #图名
-'''
 plt.xlabel("weight")#x轴标签
 plt.ylabel("value")#y轴标签
 plt.tick_params(axis='both')#x,y轴都有刻度
  
-plt.savefig('.//result//3.2.png')#保存图片，一定要在show之前保存图片，否则保存的图片就为空白
+plt.savefig('3.2.png')#保存图片，一定要在show之前保存图片，否则保存的图片就为空白
 plt.show()
-'''
+
 #排序
 for i in range(len(weight)):
     rate=weight[i]/value[i]
