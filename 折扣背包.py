@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import time
 fname = 'data.txt'
 with open(fname, 'r') as f:
     s = [i.split(',') for i in f.readlines()]
@@ -19,14 +20,12 @@ print(weight)
 print("the value of knapsack is:")
 print(value)
 plt.scatter(weight,value)
-#plt.title("Sales for the first 6 months") #图名
 plt.xlabel("weight")#x轴标签
 plt.ylabel("value")#y轴标签
 plt.tick_params(axis='both')#x,y轴都有刻度
  
 plt.savefig('3.2.png')#保存图片，一定要在show之前保存图片，否则保存的图片就为空白
 plt.show()
-
 #排序
 for i in range(len(weight)):
     rate=weight[i]/value[i]
@@ -40,10 +39,6 @@ for i in range(len(weight)):
                   if j==k:
                       t=[weight[i],value[j],ratio[k]]
                       packbag.append(t)
-'''
-for i in range(len(packbag)):
-    print(packbag[i])
-'''
 print("The result of order is:")
 print("weight  value  ratio")
 message=sorted(packbag,key=lambda x:x[2],reverse=True)
@@ -51,6 +46,7 @@ for i in range(len(message)):
     print(message[i])
 
 #动态规划算法
+start=time.perf_counter()
 c=10149
 value1=[]
 value1 = [[0 for j in range(c + 1)] for i in range(number + 1)]
@@ -72,4 +68,6 @@ print('背包中所装物品为:')
 for i in range(number):
     if x[i]:
         print('第', i+1, '个,', end='')
-
+print()
+end=time.perf_counter()
+print("运行时间: %s Seconds"%(end-start))
